@@ -1,10 +1,12 @@
-import React from 'react'
-import NotFoundBlock from '../components/NotFoundBlock'
+import React from "react";
+import NotFoundBlock from "../components/NotFoundBlock";
 
 const NotFound = () => {
   return (
-    <NotFoundBlock />
-  )
-}
+    <div className="container">
+      <NotFoundBlock />
+    </div>
+  );
+};
 
-export default NotFound
+export default NotFound;
