@@ -16,6 +16,10 @@
         // width: 450px;
         border: 1px solid rgba(0, 0, 0, 0.2);
     }
+    @media (max-width: 645px){
+        width: 200px;
+      }
+
 }
 .icon{
     width: 24px;

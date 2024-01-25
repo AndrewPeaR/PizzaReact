@@ -1,23 +1,27 @@
-import React from "react";
-import { useState, useEffect } from "react";
+// import React from "react";
+import { useState, useEffect, useContext } from "react";
 
 
+import { SearchContext } from "../App";
 import Categories from "../components/Categories";
 import PizzaBlock from "../components/PizzaBlock";
 import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
 
-const Home = ({searchValue}) => {
+const Home = () => {
+  const { searchValue } = useContext(SearchContext)
+
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  // Сортировка по категориям и типу
   const [categoryId, setCategoryId] = useState(0);
   const [sortType, setSortType] = useState({
     name: "популярности",
     sortProperty: "rating",
   });
-
+  // useState для пагинации
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
@@ -29,6 +33,7 @@ const Home = ({searchValue}) => {
     const search = ''
     // вся магия фильтрации и сортировки в запросе на backend
     fetch(
+      // `https://65ad03c4adbd5aa31bdfec3a.mockapi.io/pizzas-items?page=${currentPage}&${category}&sortBy=${sortBy}&order=${orderBy}${search}`
       `https://65ad03c4adbd5aa31bdfec3a.mockapi.io/pizzas-items?page=${currentPage}&limit=4${category}&sortBy=${sortBy}&order=${orderBy}${search}`
     )
       .then((res) => res.json())
